@@ -21,7 +21,6 @@ function createParticles() {
             const z = ((j) / particlesParams.count - 0.5) * particlesParams.sizeOfPlane;
             vertices.push(x, y, z);
 
-            if(x ** 2 + y ** 2 > 1) {}
 
         }
     }
