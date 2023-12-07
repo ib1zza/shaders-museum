@@ -1,8 +1,7 @@
-import {useEffect, useState} from 'react';
+import { useState} from 'react';
 import {useControls} from "leva";
-import {ParticlesMaterial} from "../../materials/waves/wavesMaterial.ts";
+import {ParticlesMaterial} from "../../materials/waves/particlesRGB/wavesMaterial.ts";
 import * as THREE from "three";
-import gsap from 'gsap';
 import {useFrame} from "@react-three/fiber";
 import {Points} from "@react-three/drei";
 
@@ -59,7 +58,7 @@ const WavesRipple = () => {
             },
         },
         pointSize: {
-            value: 8 * Math.min(window.devicePixelRatio, 2),
+            value: 12 * Math.min(window.devicePixelRatio, 2),
             min: 1,
             max: 100,
             onChange: (data) => {
@@ -79,7 +78,7 @@ const WavesRipple = () => {
             }
         },
         colorOffset: {
-            value: 0.4,
+            value: 0.2,
             min: 0,
             max: 1,
             onChange: (data) => {
@@ -87,7 +86,7 @@ const WavesRipple = () => {
             }
         },
         colorMultiplier: {
-            value: 1.25,
+            value: 2,
             min: 0,
             max: 5,
             onChange: (data) => {
@@ -130,22 +129,9 @@ const WavesRipple = () => {
 
     })
 
-    // useEffect(() => {
-    //     if (!isCalm) {
-    //         gsap.to(ParticlesMaterial.uniforms.uMultiplierElevation, {
-    //             duration: constants.animationDuration,
-    //             value: 1
-    //         });
-    //     } else {
-    //         gsap.to(ParticlesMaterial.uniforms.uMultiplierElevation, {
-    //             duration: constants.animationDuration,
-    //             value: 0
-    //         });
-    //     }
-    // }, [isCalm])
 
     useFrame((_, delta) => {
-        // ParticlesMaterial.uniforms.uTime.value += delta
+        ParticlesMaterial.uniforms.uTime.value += delta
     })
 
     ParticlesMaterial.uniforms.uMultiplierElevation.value = 1;

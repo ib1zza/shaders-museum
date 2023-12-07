@@ -5,6 +5,12 @@ import vertex from "./wavesShaders/vertex.glsl";
 
 const wavesParams = {
     size: 15,
+    colorOffset: 0.3,
+    colorMultiplier: 1.15,
+    elevation: 3.3,
+    frequency: 3.5,
+    speed: 0.6,
+    iterations: 1,
 }
 
 

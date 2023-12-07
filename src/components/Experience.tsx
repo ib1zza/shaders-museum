@@ -1,16 +1,16 @@
-import React, {useContext, useEffect, useState} from 'react';
+import {useState} from 'react';
 import {useControls} from "leva";
 import {OrbitControls} from "@react-three/drei";
 import WavesRipple from "./ShaderPages/WavesRipple.tsx";
 import {useFrame, useThree} from "@react-three/fiber";
-import {ParticlesMaterial} from "../materials/waves/wavesMaterial.ts";
+import SiriWaves from "./ShaderPages/SiriWaves.tsx";
 
 const Experience = () => {
     const {camera, clock} = useThree()
 
     const [isRotating, setIsRotating] = useState(true);
 
-    useFrame(({ clock }) => {
+    useFrame((_) => {
         if (!isRotating) return;
         const elapsedTime = clock.getElapsedTime() * 0.5;
 
@@ -23,25 +23,28 @@ const Experience = () => {
     });
 
     useControls('global', {
-        animation: {
+        rotation: {
             value: true,
             onChange: (data) => {
                 console.log(data)
                 setIsRotating(data)
 
-                if(!data) {
-                    clock.stop()
-                } else {
-                    clock.start()
-                }
             }
         },
+        background: {
+            value: "#000000",
+            onChange: (data) => {
+                console.log(data)
+                document.body.style.background = data
+            }
+        }
     });
 
     return (
         <>
             <OrbitControls makeDefault/>
-            <WavesRipple/>
+            {/*<WavesRipple/>*/}
+            <SiriWaves/>
         </>
     );
 };

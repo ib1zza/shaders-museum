@@ -115,13 +115,15 @@ void main () {
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
 
     float elevation = 0.0;
+    float dist = distance(uv, vec2(0.5));
+    float multiplierForUp =  -dist * dist * 2.0 + 0.5;
 
 
     for(float i = 1.0; i <= uSmallWavesIterations; i++) {
         elevation += sin(cnoise(vec3(modelPosition.xz * uSmallWavesFrequency * i, uTime * uSmallWavesSpeed)) / 10.0 * uSmallWavesElevation);
     }
 
-    modelPosition.y += elevation * uMultiplierElevation;
+    modelPosition.y += elevation * uMultiplierElevation * multiplierForUp;
 
     vec4 viewPosition = viewMatrix * modelPosition;
     vec4 projectedPosition = projectionMatrix * viewPosition;
