@@ -37,12 +37,12 @@ void main()
 
 //    vec3 vColor = vec3( abs(sin(time)) + 0.5, 0, abs(cos(time)) + 0.5);
 
-    vec3 rgb = hsb2rgb(vec3(vUv.x * 0.1 + time, 1.0, 1.5)); 
+    vec3 rgb = hsb2rgb(vec3(vUv.x * 0.1 + time, 1.0, 1.5));
 
     vec3 color = mix( uDepthColor, rgb, mixStrength );
 
 //    vec3 color = vColor;
-    gl_FragColor = vec4( color.rgb , strength* isInCircle);
+    gl_FragColor = vec4( color.rgb , isInCircle);
 
 
 

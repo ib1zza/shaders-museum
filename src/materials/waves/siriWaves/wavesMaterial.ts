@@ -19,7 +19,7 @@ export const wavesParams = {
 
 export const SiriWavesMaterial = new THREE.ShaderMaterial({
     depthWrite: false,
-    precision: "lowp",
+    precision: "mediump",
     transparent: true,
     blending: THREE.AdditiveBlending,
     // vertexColors: true,
